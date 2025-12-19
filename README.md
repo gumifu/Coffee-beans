@@ -2,19 +2,63 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# Velvet Bean Coffee
 
-This contains everything you need to run your app locally.
+A beautiful coffee beans overview website built with Next.js, React Three Fiber, and Tailwind CSS.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1XhI8kEdXEfgv46YTXzVUTgPqtsv1hPOK
+## Features
+
+- 🎨 Modern, responsive design
+- ☕ Interactive 3D coffee bean animation
+- 📱 Mobile-friendly navigation
+- 🚀 Built with Next.js 15 (App Router)
+- 🎭 Smooth scroll-triggered animations
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js 18+ and npm
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+
+   ```bash
+   npm install
+   ```
+
+2. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Build for Production
+
+```bash
+npm run build
+npm start
+```
+
+## 3Dモデルの追加
+
+実際の3Dモデル（GLB/GLTF形式）を使用する場合：
+
+1. 3Dモデルファイルを `public/models/` フォルダに配置します
+2. `.env.local` ファイルに以下を追加：
+   ```
+   NEXT_PUBLIC_MODEL_PATH=/models/your-model-file.glb
+   ```
+   または、`app/page.tsx` の `modelPath` 変数を直接編集してください
+
+モデルが指定されていない場合、自動的にSphere（球体）ベースのフォールバックが表示されます。
+
+詳細は `public/models/README.md` を参照してください。
+
+## Tech Stack
+
+- **Next.js 15** - React framework with App Router
+- **React Three Fiber** - 3D graphics library
+- **@react-three/drei** - React Three Fiber utilities (GLTF loader含む)
+- **Tailwind CSS** - Utility-first CSS framework
+- **TypeScript** - Type-safe JavaScript
+- **Lucide React** - Icon library

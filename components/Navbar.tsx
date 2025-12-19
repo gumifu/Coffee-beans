@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Coffee, Menu, X } from 'lucide-react';
 
 interface NavItem {
@@ -15,7 +18,7 @@ const navItems: NavItem[] = [
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +35,7 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group">
           <div className="bg-coffee-800 p-2 rounded-lg text-white group-hover:bg-coffee-700 transition-colors">
             <Coffee size={24} />
           </div>
@@ -44,9 +47,9 @@ const Navbar: React.FC = () => {
           {navItems.map((item) => (
             <Link
               key={item.path}
-              to={item.path}
+              href={item.path}
               className={`text-sm font-semibold tracking-wide uppercase hover:text-coffee-600 transition-colors ${
-                location.pathname === item.path ? 'text-coffee-800 border-b-2 border-coffee-800' : 'text-coffee-900/70'
+                pathname === item.path ? 'text-coffee-800 border-b-2 border-coffee-800' : 'text-coffee-900/70'
               }`}
             >
               {item.label}
@@ -72,7 +75,7 @@ const Navbar: React.FC = () => {
           {navItems.map((item) => (
             <Link
               key={item.path}
-              to={item.path}
+              href={item.path}
               onClick={() => setIsMenuOpen(false)}
               className="text-lg font-serif font-medium text-coffee-900 py-2 border-b border-coffee-100"
             >
